@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +14,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 import { MessageText } from '../../components';
+import MessageTool from '../MessageTool';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,6 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.background.default,
       padding: theme.spacing(3),
     },
+    send: {
+      position: 'fixed',
+      bottom: theme.spacing(2),
+      right: theme.spacing(3),
+    },
   })
 );
 
@@ -45,7 +51,7 @@ export default function MessageBox() {
 
   return (
     <Box display="flex" flex={1} height="100%">
-      <Box width={200} flexShrink={0}>
+      <Box width={240} flexShrink={0}>
         <div className={classes.toolbar} />
         <Divider />
         <List disablePadding>
@@ -56,9 +62,9 @@ export default function MessageBox() {
           <Divider component="li" />
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List disablePadding>
-              {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text) => (
+              {['刘亦菲', '王菲', '林俊杰', '周杰伦'].map((text) => (
                 <>
-                  <ListItem button key={text}>
+                  <ListItem button key={text} selected={text === '刘亦菲'}>
                     <ListItemAvatar classes={{ root: classes.rootAvatar }}>
                       <Avatar className={classes.small} />
                     </ListItemAvatar>
@@ -77,7 +83,7 @@ export default function MessageBox() {
           <Toolbar>
             <Avatar />
             <Box pl={2} />
-            <Typography noWrap>Permanent drawer</Typography>
+            <Typography noWrap>刘亦菲</Typography>
           </Toolbar>
         </Box>
 
@@ -91,7 +97,16 @@ export default function MessageBox() {
           </Box>
           <Divider />
           <Box>
+            <MessageTool />
+            <Divider />
             <TextField rows={7} fullWidth multiline inputProps={{ style: { padding: theme.spacing(1) } }} />
+            <Box display="flex" alignItems="center" position="fixed" right={theme.spacing(3)} bottom={theme.spacing(2)}>
+              <Typography variant="caption" color="textSecondary">
+                Enter 发送，Ctrl+Enter 换行
+              </Typography>
+              <Box pr={2} />
+              <Button variant="outlined">发送</Button>
+            </Box>
           </Box>
         </Box>
       </Box>

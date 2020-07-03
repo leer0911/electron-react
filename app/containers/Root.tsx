@@ -23,21 +23,21 @@ const Root = ({ store, history }: Props) => {
       <Provider store={store}>
         <CssBaseline />
         <Box display="flex" width="100vw" height="100vh">
-          <Draggable
+          <Box
             display="flex"
             flexDirection="column"
             alignItems="center"
             flexShrink={0}
             pt={2}
             pb={2}
-            width={60}
+            width={65}
             height="100vh"
             bgcolor={defaultTheme.palette.primary.main}
           >
             <Avatar />
             <Box mb={2} />
             <Navigation />
-          </Draggable>
+          </Box>
 
           <Box display="flex" flexDirection="column" flex={1} height="100vh">
             <Draggable display="flex" justifyContent="flex-end" alignItems="center" height={30}>

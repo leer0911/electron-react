@@ -3,12 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import { common } from '@material-ui/core/colors';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import FolderIcon from '@material-ui/icons/Folder';
+import WorkIcon from '@material-ui/icons/Work';
+import TextsmsIcon from '@material-ui/icons/Textsms';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 
 const useStyles = makeStyles({
   root: {
+    width: '100%',
     flexDirection: 'column',
     background: 'none',
     justifyContent: 'start',
@@ -19,7 +21,7 @@ const useStyles = makeStyles({
     maxWidth: 'none',
     minWidth: 'auto',
     color: common.white,
-    opacity: 0.7,
+    opacity: 0.5,
     '&$selected': {
       opacity: 1,
       color: common.white,
@@ -56,7 +58,7 @@ export default function SimpleBottomNavigation() {
           selected: classes.selected,
         }}
         label="消息"
-        icon={<RestoreIcon />}
+        icon={<TextsmsIcon />}
       />
       <BottomNavigationAction
         classes={{
@@ -65,7 +67,7 @@ export default function SimpleBottomNavigation() {
           selected: classes.selected,
         }}
         label="文档"
-        icon={<FavoriteIcon />}
+        icon={<FolderIcon />}
       />
       <BottomNavigationAction
         classes={{
@@ -74,7 +76,7 @@ export default function SimpleBottomNavigation() {
           selected: classes.selected,
         }}
         label="工作"
-        icon={<LocationOnIcon />}
+        icon={<WorkIcon />}
       />
 
       <BottomNavigationAction
@@ -84,7 +86,7 @@ export default function SimpleBottomNavigation() {
           selected: classes.selected,
         }}
         label="通讯录"
-        icon={<LocationOnIcon />}
+        icon={<ContactPhoneIcon />}
       />
     </BottomNavigation>
   );
