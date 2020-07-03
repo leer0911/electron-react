@@ -1,12 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import { CssBaseline, Box, Avatar } from '@material-ui/core';
+import { CssBaseline, Box, Avatar, Divider } from '@material-ui/core';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { History } from 'history';
+import { WindowsControl } from '../features';
 import Navigation from './Navigation';
 import { Store } from '../store';
 import Routes from '../Routes';
+import { Draggable } from '../components';
 
 type Props = {
   store: Store;
@@ -21,7 +23,7 @@ const Root = ({ store, history }: Props) => {
       <Provider store={store}>
         <CssBaseline />
         <Box display="flex" width="100vw" height="100vh">
-          <Box
+          <Draggable
             display="flex"
             flexDirection="column"
             alignItems="center"
@@ -35,9 +37,13 @@ const Root = ({ store, history }: Props) => {
             <Avatar />
             <Box mb={2} />
             <Navigation />
-          </Box>
+          </Draggable>
 
-          <Box flex={1} height="100vh" position="relative">
+          <Box display="flex" flexDirection="column" flex={1} height="100vh">
+            <Draggable display="flex" justifyContent="flex-end" alignItems="center" height={30}>
+              <WindowsControl />
+            </Draggable>
+            <Divider />
             <ConnectedRouter history={history}>
               <Routes />
             </ConnectedRouter>
