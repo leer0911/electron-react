@@ -14,9 +14,7 @@ const router = routerMiddleware(history);
 const middleware = [...getDefaultMiddleware(), router];
 
 const excludeLoggerEnvs = ['test', 'production'];
-const shouldIncludeLogger = !excludeLoggerEnvs.includes(
-  process.env.NODE_ENV || ''
-);
+const shouldIncludeLogger = !excludeLoggerEnvs.includes(process.env.NODE_ENV || '');
 
 if (shouldIncludeLogger) {
   const logger = createLogger({
@@ -43,5 +41,6 @@ export const configuredStore = (initialState?: RootState) => {
   }
   return store;
 };
+
 export type Store = ReturnType<typeof configuredStore>;
 export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>;
