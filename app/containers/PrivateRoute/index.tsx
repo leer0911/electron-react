@@ -2,20 +2,23 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
 
+const Window: any = window;
+
+Window.isAuthenticated = false;
+
 export const fakeAuth = {
-  isAuthenticated: false,
   authenticate() {
-    fakeAuth.isAuthenticated = true;
+    Window.isAuthenticated = true;
   },
   signOut() {
-    fakeAuth.isAuthenticated = false;
+    Window.isAuthenticated = false;
   },
 };
 
 export default function PrivateRoute(props: any) {
   const { children, ...rest } = props;
   const renderRoute = ({ location }: any) => {
-    if (fakeAuth.isAuthenticated) {
+    if (Window.isAuthenticated) {
       return children;
     }
     return <Redirect to={{ pathname: '/login', state: { from: location } }} />;

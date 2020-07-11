@@ -1,11 +1,20 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { useTheme } from '@material-ui/core';
 import { LoginForm } from '../../containers';
+import { Draggable } from '../../components';
 
 export default function Login() {
+  const theme = useTheme();
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+    <Draggable
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      width="100vw"
+      height="100vh"
+      bgcolor={theme.palette.grey[300]}
+    >
       <LoginForm />
-    </Box>
+    </Draggable>
   );
 }
