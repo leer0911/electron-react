@@ -127,7 +127,13 @@ export default function MessageBox() {
           <Box>
             <MessageTool />
             <Divider />
-            <TextField rows={7} fullWidth multiline inputProps={{ style: { padding: theme.spacing(1) } }} />
+            <TextField
+              placeholder="请输入消息"
+              rows={7}
+              fullWidth
+              multiline
+              inputProps={{ style: { padding: theme.spacing(1) } }}
+            />
             <Box display="flex" alignItems="center" position="fixed" right={theme.spacing(3)} bottom={theme.spacing(2)}>
               <Typography variant="caption" color="textSecondary">
                 Enter 发送，Ctrl+Enter 换行

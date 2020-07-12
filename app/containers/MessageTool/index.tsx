@@ -2,8 +2,8 @@ import React from 'react';
 import { IconButton } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
-import MoodIcon from '@material-ui/icons/Mood';
 import ImageIcon from '@material-ui/icons/Image';
+import EmojiBox from './EmojiBox';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,9 +34,7 @@ export default function SvgIconsColor() {
         </IconButton>
       </label>
 
-      <IconButton component="span" size="small">
-        <MoodIcon />
-      </IconButton>
+      <EmojiBox />
     </div>
   );
 }
