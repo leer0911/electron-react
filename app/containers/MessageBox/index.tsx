@@ -2,7 +2,6 @@ import React from 'react';
 import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/styles';
 import { Box, Button } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -14,9 +13,9 @@ import TextField from '@material-ui/core/TextField';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
-import { AddCircleOutline } from '@material-ui/icons';
 import { MessageText } from '../../components';
 import MessageTool from '../MessageTool';
+import Tools from './Tools';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(4),
       height: theme.spacing(4),
     },
-    toolbar: { display: 'flex', alignItems: 'center', padding: theme.spacing(2), ...theme.mixins.toolbar },
+    toolbar: { display: 'flex', alignItems: 'center', padding: theme.spacing(0, 1, 0, 2), ...theme.mixins.toolbar },
     content: {
       flexGrow: 1,
       backgroundColor: theme.palette.background.default,
@@ -46,6 +45,24 @@ export default function MessageBox() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const renderPrimary = (title: string, text: string) => {
+    return (
+      <Box display="flex" justifyContent="space-between">
+        <Typography variant="subtitle2">{title}</Typography>
+        <Typography variant="caption" color="textSecondary">
+          {text}
+        </Typography>
+      </Box>
+    );
+  };
+
+  const renderSecondary = (text: string) => {
+    return (
+      <Typography variant="caption" color="textSecondary">
+        {text}
+      </Typography>
+    );
+  };
 
   const handleClick = () => {
     setOpen(!open);
@@ -53,20 +70,18 @@ export default function MessageBox() {
 
   return (
     <Box display="flex" flex={1} height="100%">
-      <Box width={240} flexShrink={0}>
+      <Box width={280} flexShrink={0}>
         <div className={classes.toolbar}>
           <Box pr={1}>
-            <TextField variant="outlined" size="small" />
+            <TextField variant="outlined" size="small" placeholder="搜索" />
           </Box>
 
-          <IconButton component="span">
-            <AddCircleOutline />
-          </IconButton>
+          <Tools />
         </div>
         <Divider />
         <List disablePadding>
           <ListItem button onClick={handleClick}>
-            <ListItemText primary="单聊" />
+            <ListItemText primary="更早" />
             {open ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Divider component="li" />
@@ -78,7 +93,10 @@ export default function MessageBox() {
                     <ListItemAvatar classes={{ root: classes.rootAvatar }}>
                       <Avatar className={classes.small} />
                     </ListItemAvatar>
-                    <ListItemText primary={text} />
+                    <ListItemText
+                      primary={renderPrimary(text, '07-10')}
+                      secondary={renderSecondary('欢迎加入 vv work，新成员入群可以查看所有...')}
+                    />
                   </ListItem>
                   <Divider component="li" />
                 </>
