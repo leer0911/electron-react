@@ -10,9 +10,10 @@ export default function Routes() {
   return (
     <App>
       <Switch>
-        <Redirect from="/" to="/home" exact />
+        <Route path="/" component={Home} />
+        {/* <Redirect from="/" to="/home" exact />
         <PrivateRoute path="/home" component={Home} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={Login} /> */}
       </Switch>
     </App>
   );

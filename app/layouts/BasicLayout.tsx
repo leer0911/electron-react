@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Avatar, Divider, useTheme } from '@material-ui/core';
-import { Navigation } from '../containers';
+import { Box, Divider, useTheme } from '@material-ui/core';
+import { Navigation, Personal } from '../containers';
 import { Draggable } from '../components';
 import { WindowsControl } from '../features';
 
@@ -23,7 +23,7 @@ export default function BasicLayout({ children }: Props) {
         height="100vh"
         bgcolor={theme.palette.primary.main}
       >
-        <Avatar />
+        <Personal />
         <Box mb={2} />
         <Navigation />
       </Box>
