@@ -2,6 +2,7 @@ import React from 'react';
 import { createStyles, Theme, makeStyles, useTheme } from '@material-ui/core/styles';
 import { Box, Button } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -13,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
+import { AddCircleOutline } from '@material-ui/icons';
 import { MessageText } from '../../components';
 import MessageTool from '../MessageTool';
 
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(4),
       height: theme.spacing(4),
     },
-    toolbar: theme.mixins.toolbar,
+    toolbar: { display: 'flex', alignItems: 'center', padding: theme.spacing(2), ...theme.mixins.toolbar },
     content: {
       flexGrow: 1,
       backgroundColor: theme.palette.background.default,
@@ -52,7 +54,15 @@ export default function MessageBox() {
   return (
     <Box display="flex" flex={1} height="100%">
       <Box width={240} flexShrink={0}>
-        <div className={classes.toolbar} />
+        <div className={classes.toolbar}>
+          <Box pr={1}>
+            <TextField variant="outlined" size="small" />
+          </Box>
+
+          <IconButton component="span">
+            <AddCircleOutline />
+          </IconButton>
+        </div>
         <Divider />
         <List disablePadding>
           <ListItem button onClick={handleClick}>

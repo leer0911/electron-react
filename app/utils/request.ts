@@ -1,17 +1,12 @@
 import axios from 'axios';
-import qs from 'qs';
 
 const request = axios.create({
+  baseURL: 'http://localhost:3000',
   timeout: 5000,
 });
 
 request.interceptors.request.use(
   (config) => {
-    if (config.method === 'post' || config.method === 'put' || config.method === 'delete') {
-      if (typeof config.data !== 'string' && config.headers['Content-Type'] !== 'multipart/form-data') {
-        config.data = qs.stringify(config.data);
-      }
-    }
     return config;
   },
   (error) => {
@@ -21,7 +16,7 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   async (data) => {
-    return data;
+    return data.data;
   },
   (error) => {
     if (error.response) {

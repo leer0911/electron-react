@@ -1,12 +1,12 @@
 import React from 'react';
 import { MessageBox } from '../../containers';
 import { BasicLayout } from '../../layouts';
-import { fetchBaidu } from '../../services';
+import { fetchUsers } from '../../services';
 
 export default function Home() {
   React.useEffect(() => {
     const fetchData = async () => {
-      const res = await fetchBaidu();
+      const res = await fetchUsers();
       console.log(res);
     };
     fetchData();
