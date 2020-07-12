@@ -1,1 +1,2 @@
-export { default as ipcWindowControl } from './ipcWindowControl';
+export * from './ipc';
+export * from './api';

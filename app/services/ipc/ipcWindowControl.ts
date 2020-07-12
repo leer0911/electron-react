@@ -1,6 +1,6 @@
 import { ipcMain, BrowserWindow } from 'electron';
 
-export default function runMessagingService(mainWindow: BrowserWindow) {
+export default function ipcWindowControl(mainWindow: BrowserWindow) {
   ipcMain.on('window-toggle-maximize', () => {
     if (mainWindow.isMaximized()) {
       mainWindow.unmaximize();

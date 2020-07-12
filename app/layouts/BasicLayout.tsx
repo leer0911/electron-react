@@ -17,9 +17,9 @@ export default function BasicLayout({ children }: Props) {
         flexDirection="column"
         alignItems="center"
         flexShrink={0}
-        pt={2}
+        pt={4}
         pb={2}
-        width={65}
+        width={70}
         height="100vh"
         bgcolor={theme.palette.primary.main}
       >

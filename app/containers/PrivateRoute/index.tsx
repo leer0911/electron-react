@@ -16,9 +16,12 @@ export const fakeAuth = {
 };
 
 export default function PrivateRoute(props: any) {
-  const { children, ...rest } = props;
+  const { children, component, ...rest } = props;
   const renderRoute = ({ location }: any) => {
     if (Window.isAuthenticated) {
+      if (component && !children) {
+        return React.createElement(component, props);
+      }
       return children;
     }
     return <Redirect to={{ pathname: '/login', state: { from: location } }} />;
